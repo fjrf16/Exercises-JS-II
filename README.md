@@ -1,58 +1,31 @@
-# Ejercicios propuestos para el 29/10/2021
-## Preparaós para sufrir un poquito ;) 
+## Instructions
 
-### ¿Cómo comenzar el proyecto?
+In this project you can find a folder called "assets", inside this folder you'll find a script with name `index.js` wich is the mainly file in the project.
 
-1. Crea un nuevo WorkSpace en GITPOD
-2. Haz un fork del proyecto.
-3. Clona el fork en tu GITPOD `git clone <url>`
-4. Comienza a trabajar :) 
+If you open the file `index.js` there are several functions on it, every function has it own description at the start of the function, with comments.
 
-### ¿Cómo ejecutar el proyecto?
+An example can be visualized here:
 
-1. Situate en el directorio del proyecto.
-2. Ejecuta `node index.js`
-3. Verás los resultados por terminal.
+```javascript
+//----------------------------------------------------------------------------------------
+// Ejercicio 1: Ordenar array de menor a mayor
 
-### Instrucciones 
+function excuseRandom(surnames,escuses,names) { ...
+```
+You have the solution in the print and call statement at the end of the exercise wich is marked with a doted-point line comment, like this:
 
-- Código documentado
-- Prohibida la programación declarativa (solo aplica a filter/map/reduce/forEach)
-- Aplicando programación funcional (Separado en funciones)
-- Prohibido la creacción de objetos, solo están permitidos diccionarios en todo caso.
-- La declaracion de funciones y variables en INGLES
-- Aplicando escritura camel case.
-- Elaborar un archivo README explicando lo hecho y incluyendo las instrucciones para ejecutar el proyecto.
-- En los ejercicios de ordenación no puedes utilizar ninguna funcion en JS que lo ordene, recuerda que tienes que usar programación imperativa.
+```javascript
+ //console.log(bubbleSortMinToMax(sequence))
 
-### Ejercicios
+  //--------------------------------------------------------
 
-**PISTA: Antes de usar los arrays deberás limpiarlo**
+```
+Initially the calls are commented, you can delete the comment and try the use of the function.
 
-1. Crea una función que ordene de menor a mayor el array sequence.
-2. Crea una funcion que ordene de mayor a menor el array sequence.
-3. Crea una funcion que calcule la media aritmética de los datos en el array Sequence.
-4. El cálculo de la letra del Documento Nacional de Identidad (DNI) es un proceso matemático sencillo que se basa en obtener el resto de la división entera del número de DNI y el número 23. A partir del resto de la división, se obtiene la letra seleccionándola dentro de un array de letras. El array de letras es:
-Por tanto si el resto de la división es 0, la letra del DNI es la T y si el resto es 3 la letra es la A. Con estos datos, elaborar un pequeño script que:- Almacene en una variable el número de DNI indicado por el usuario y en otra variable la letra del DNI que se ha indicado.
-En primer lugar se debe comprobar si el número es menor que 0 o mayor que 99999999. Si ese es el caso, se muestra un mensaje al usuario indicando que el número proporcionado no es válido y el programa no muestra más mensajes.
-Si el número es válido, se calcula la letra que le corresponde según el método explicado anteriormente. Una vez calculada la letra, se debe comparar con la letra indicada por el usuario. Si no coinciden, se muestra un mensaje al usuario diciéndole que la letra que ha indicado no es correcta. En otro caso, se muestra un mensaje indicando que el número y la letra de DNI son correctos.
+There are several functions that focus on order in the arrays and detect of the correct DNI and letter asociated.
 
-### ¿Cómo entregar el proyecto?
+### Also in gitpod
 
-1. Finaliza todos los ejercicios propuestos y asegurate de que están comentados :) 
-2. Escribeme por Slack @Manu y enviame el Link de tu repo para poder comprobar los ejercicios.
-3. Espera mi respuesta o tus amigos ISSUES por GITHUB
+If you use gitpod you can open it here:
 
-### Contribuciones
-
-Si ves algun fallo en estas instrucciones recuerda que soy **HUMANO**
-Puedes hacer un PULL-REQUEST y estaré encantado de aceptartelo siempre y cuando contenga información relevante. 
-
-### Ultimas cosas
-
-Recuerda que soy un maniático del orden y la jerarquía, asegurate que tus funciones están optimizadas, comentadas y tabuladas correctamente, si no tendrás que corregirlo.
-
-Divierte escribiendo código en JS, pero sobre todo, pasa un feliz Halloween con tus seres queridos :) 
-
-![42759](https://user-images.githubusercontent.com/84098854/139463444-6f7b5508-5ad5-4b23-bc26-aa363edbf8d7.jpg)
-
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io#https://github.com/fjrf16/Exercises-JS-II.git)
