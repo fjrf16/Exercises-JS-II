@@ -10,7 +10,8 @@ An example can be visualized here:
 //----------------------------------------------------------------------------------------
 // Ejercicio 1: Ordenar array de menor a mayor
 
-function excuseRandom(surnames,escuses,names) { ...
+// Primero hacemos la función para limpiar los arrays, tanto numericos como de string
+function cleanArray(array) {...
 ```
 You have the solution in the print and call statement at the end of the exercise wich is marked with a doted-point line comment, like this:
 
