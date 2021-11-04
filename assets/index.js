@@ -11,68 +11,55 @@ function cleanArray(array) {
   
     for (let index = 0; index < array.length; index++){
        
-        if (typeof(array[index]) === 'string'){
-        }
-
-        else if(typeof(array[index]) === 'number'){
-        }
-        
-        else {
-          array.splice(index,1);
-          index--; // volvemos a disminir el índice para que no se salte el siguiente
-        }
+        if (typeof array[index] !== 'string' && typeof array[index] !== 'number'){
+            // elimina el valor del array ya que no cumple los requisitos
+            array.splice(index,1);
+            index--; // volvemos a disminir el índice para que no se salte el siguiente
+         }
     }
   return array;
   }
 
-// Funcion para el ordenamiento de minimo a maximo
-  function bubbleSortMinToMax(array) {
+// Funcion para el ordenamiento de minimo a maximo o vicerversa en función del tipo de opertaion '<' o bien '>'
+  function bubbleSort(array, operation) {
     
     array = cleanArray(array); 
 
-    for(let i=0; i<array.length; i++){
+   
+        for(let i=0; i<array.length; i++){
 
-        for(let j=0; j<i; j++){ // A la vez que recorremos comprobamos los anteriores por si uno es menor que otro
+            for(let j=0; j<i; j++){ // A la vez que recorremos comprobamos los anteriores por si uno es menor que otro
+                
+                if (operation == '<'){
 
-            if(array[i] < array[j]){ // Miramos los anteriores por si ha habido un cambio
+                    if(array[i] < array[j]){ // Miramos los anteriores por si ha habido un cambio
 
-                let correction = array[i]; // Las posiciones tiene que invertirse si se quiere ordenar
-                array[i] = array[j];
-                array[j] = correction;
+                        let correction = array[i]; // Las posiciones tiene que invertirse si se quiere ordenar
+                        array[i] = array[j];
+                        array[j] = correction;
+                    }
+                }
+                else if(operation == '>'){
+
+                    if(array[i] >= array[j]){ // Miramos los anteriores por si ha habido un cambio
+
+                        let correction = array[i]; // hay que invertir las posiciones para el ordenamiento
+                        array[i] = array[j];
+                        array[j] = correction;
+                    }
+
+                }
             }
-        }
 
-    }
+        }
+    
+
     return array;
   }
 
-  //console.log(bubbleSortMinToMax(sequence))
-
-  //--------------------------------------------------------
-  // Ejercicio 2: Ordenar arrray de mayor a menor
   
-  // Función para el ordenamiento de Maximo a minimo
-  function bubbleSortMaxToMin(array) {
-    
-    array = cleanArray(array); 
 
-    for(let i=0; i<array.length; i++){
-
-        for(let j=0; j<i; j++){ // A la vez que recorremos comprobamos los anteriores por si uno es menor que otro
-
-            if(array[i] >= array[j]){ // Miramos los anteriores por si ha habido un cambio
-
-                let correction = array[i]; // hay que invertir las posiciones para el ordenamiento
-                array[i] = array[j];
-                array[j] = correction;
-            }
-        }
-
-    }
-    return array;
-  }
-
- // console.log(bubbleSortMaxToMin(sequence))
+ console.log(bubbleSort(sequence, '>'))
 
 //-----------------------------------------------------------------------
 
