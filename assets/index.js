@@ -8,58 +8,54 @@ const letrasDNI = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', '
 
 // Primero hacemos la función para limpiar los arrays, tanto numericos como de string
 function cleanArray(array) {
-  
-    for (let index = 0; index < array.length; index++){
-       
-        if (typeof array[index] !== 'string' && typeof array[index] !== 'number'){
+
+    let newArray =[];
+
+    for (let index = 0; index < array.length; index++) {
+        if (typeof array[index] === 'string' || typeof array[index] === 'number') {
             // elimina el valor del array ya que no cumple los requisitos
-            array.splice(index,1);
-            index--; // volvemos a disminir el índice para que no se salte el siguiente
-         }
+            newArray.push(array[index])
+        }
     }
-  return array;
-  }
+    return newArray;
+}
 
 // Funcion para el ordenamiento de minimo a maximo o vicerversa en función del tipo de opertaion '<' o bien '>'
-  function bubbleSort(array, operation) {
-    
-    array = cleanArray(array); 
+function bubbleSort(array, operation) {
 
-   
-        for(let i=0; i<array.length; i++){
+    array = cleanArray(array);
 
-            for(let j=0; j<i; j++){ // A la vez que recorremos comprobamos los anteriores por si uno es menor que otro
-                
-                if (operation == '<'){
+    for (let i = 0; i < array.length; i++) {
 
-                    if(array[i] < array[j]){ // Miramos los anteriores por si ha habido un cambio
+        for (let j = 0; j < i; j++) { // A la vez que recorremos comprobamos los anteriores por si uno es menor que otro
 
-                        let correction = array[i]; // Las posiciones tiene que invertirse si se quiere ordenar
-                        array[i] = array[j];
-                        array[j] = correction;
-                    }
-                }
-                else if(operation == '>'){
+            if (operation == '<' && array[i] < array[j]) {
 
-                    if(array[i] >= array[j]){ // Miramos los anteriores por si ha habido un cambio
+                // Miramos los anteriores por si ha habido un cambio
 
-                        let correction = array[i]; // hay que invertir las posiciones para el ordenamiento
-                        array[i] = array[j];
-                        array[j] = correction;
-                    }
+                let correction = array[i]; // Las posiciones tiene que invertirse si se quiere ordenar
+                array[i] = array[j];
+                array[j] = correction;
 
-                }
             }
+            else if (operation == '>' && array[i] >= array[j]) {
 
+                // Miramos los anteriores por si ha habido un cambio
+
+                let correction = array[i]; // hay que invertir las posiciones para el ordenamiento
+                array[i] = array[j];
+                array[j] = correction;
+
+            }
         }
-    
+
+    }
 
     return array;
-  }
+}
 
-  
 
- console.log(bubbleSort(sequence, '>'))
+console.log(bubbleSort(sequence, '>'))
 
 //-----------------------------------------------------------------------
 
@@ -68,28 +64,28 @@ function cleanArray(array) {
 // Funcion que calcule la media aritmetica de los datos del array sequence
 
 function aritmeticMean(array, acumuSum) {
-    
-    let mean=0; 
+
+    let mean = 0;
     // La media aritmética es la suma total de los elementos entre el número de elementos
 
     // Primero limpiamos el array
-    array = cleanArray(array); 
+    array = cleanArray(array);
 
     // Recorremos los valores y los vamos acumulando en la suma
     mean = acumuSum(array);
 
-    mean = mean/(array.length);
+    mean = Math.floor(mean/array.length);
 
     return mean;
 }
 
 // Función para suma acumulativa de la media
 function acumulativeSum(array) {
-    let sum=0;
-    for (let value of array){
+    let sum = 0;
+    for (let value of array) {
         sum = sum + value;
     }
-return sum;
+    return sum;
 }
 
 //console.log(aritmeticMean(sequence,acumulativeSum))
@@ -100,55 +96,51 @@ return sum;
 
 // Función para comprobar si el dni y la letra introducidos son correctos en base a un array de letras y al cálculo de la misma con el DNI
 
-function checkDNI(DNI, userLetter, array,restAndLetter,uxInf) {
-    
+function checkDNI(DNI, userLetter, array, restAndLetter, uxInf) {
+
     // Primero se limpia el array, por si no hay números
-    array = cleanArray(array); 
+    array = cleanArray(array);
 
     // El usuario debe indicar un número de DNI y debemos almacenarlo en una variable ¿PODRIA HACERSE ASI?
-   // let DNI = prompt("Enter your DNI without letter: ");
-   // let userLetter = prompt("Enter your DNI's letter: ");
-    let letter="";
+    // let DNI = prompt("Enter your DNI without letter: ");
+    // let userLetter = prompt("Enter your DNI's letter: ");
+    let letter = "";
     let resto;
 
-    if(DNI > 0 && DNI < 99999999){ // si el numero es valido se calcula la letra según el valor
+    if (DNI > 0 && DNI < 99999999) { // si el numero es valido se calcula la letra según el valor
 
-        letter = restAndLetter(resto,DNI, array); // Calculamos el resto y encontramos la letra por el valor del resultado
+        letter = restAndLetter(resto, DNI, array); // Calculamos el resto y encontramos la letra por el valor del resultado
 
-        uxInf(letter,userLetter);
+        uxInf(letter, userLetter);
     }
-    else{
+    else {
         console.log("The number is incorrect.")
     }
 
-return DNI;
+    return DNI;
 }
 
 // Funcion que muestra los mensajes al usuario y comprueba que la letra y el numero sean correctos
 function userInfo(letter, userLetter) {
-    
-    if(letter == userLetter){
+
+    if (letter == userLetter) {
         console.log("El número y letra indicados son correctos.");
     }
-    else{
+    else {
         console.log("La letra introducida no es correcta.");
     }
-    return ;
+    return;
 }
 
 // Funcion que hace el resto y busca la letra según el valor del resto
-function restAndLetterCalc(rest,DNI,array) {
-    
-    rest = DNI%23;
-        for (let index in array){
-            
-            if(index == rest){ // si el indice coincide con el resto de la división es porque es la letra buscada
-                letter = array[index];
-            }
-            else{
+function restAndLetterCalc(rest, DNI, array) {
 
-            }
-        }
+    rest = DNI % 23;
+    for (let index in array) {
+         // si el indice coincide con el resto de la división es porque es la letra buscada
+        index == rest ? letter = array[index] : letter = null
+        
+    }
     return letter;
 }
 
